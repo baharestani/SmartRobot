@@ -1,0 +1,16 @@
+﻿<Window x:Class="SmartRobot.UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SmartRobot.UI"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <DockPanel>
+        <TextBox x:Name="TextBox" DockPanel.Dock="Right" Width="100" AcceptsReturn="True"></TextBox>
+        <Canvas x:Name="Canvas" MouseDown="Canvas_MouseDown" Background="White">
+            <Rectangle x:Name="Elipse" Fill="#FF3F5D81" Height="15"  Width="15"/>
+        </Canvas>
+    </DockPanel>
+
+</Window>
