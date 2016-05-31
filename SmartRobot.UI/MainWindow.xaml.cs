@@ -16,28 +16,28 @@ namespace SmartRobot.UI
         private const int Scale = 15;
         private Robot r;
         private Point goal;
-        private Timer timer = new Timer(100);
+        private Timer timer = new Timer(200);
 
         public MainWindow()
         {
             InitializeComponent();
 
-            var s = new Sensor();
+            var s = new MapReader();
             r = new Robot(s);
 
-            DrawObstacles(s);
+            DrawObstacles(s.Map);
             timer.AutoReset = true;
             timer.Elapsed += Timer_Elapsed;
             timer.Start();
         }
 
-        private void DrawObstacles(Sensor s)
+        private void DrawObstacles(Map s)
         {
-            foreach (var p in s.obstacles)
+            foreach (var p in s.Obstacles)
             {
                 var e = new Rectangle()
                 {
-                    Fill = new SolidColorBrush(Colors.Black),
+                    Fill = new SolidColorBrush(Colors.Maroon),
                     Width = Scale,
                     Height = Scale
                 };
@@ -64,11 +64,14 @@ namespace SmartRobot.UI
 
         private void Canvas_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            Canvas_MouseMove(sender, e);
+        }
+
+        private void Canvas_MouseMove(object sender, MouseEventArgs e)
+        {
             var p = e.GetPosition(Canvas);
             this.goal = new Point((int)p.X / Scale, (int)p.Y / Scale);
             TextBox.Text=$"Goal: {goal}{Environment.NewLine}";
         }
-
-
     }
 }

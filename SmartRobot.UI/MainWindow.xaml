@@ -8,8 +8,8 @@
         Title="MainWindow" Height="350" Width="525">
     <DockPanel>
         <TextBox x:Name="TextBox" DockPanel.Dock="Right" Width="100" AcceptsReturn="True"></TextBox>
-        <Canvas x:Name="Canvas" MouseDown="Canvas_MouseDown" Background="White">
-            <Rectangle x:Name="Elipse" Fill="#FF3F5D81" Height="15"  Width="15"/>
+        <Canvas x:Name="Canvas" MouseMove="Canvas_MouseMove" MouseDown="Canvas_MouseDown" Background="Black">
+            <Rectangle x:Name="Elipse" Height="15"  Width="15" Fill="#FFF3FF00" Stroke="#FFFDCF32"/>
         </Canvas>
     </DockPanel>
 

@@ -11,7 +11,7 @@ namespace SmartRobot.Console
     {
         static void Main(string[] args)
         {
-            var r = new Robot(new Sensor());
+            var r = new Robot(new MapReader());
             var g = new Point(3, 5);
 
             while (r.Position != g)
