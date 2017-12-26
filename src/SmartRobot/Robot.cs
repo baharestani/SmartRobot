@@ -9,15 +9,15 @@ namespace SmartRobot
     public class Robot
     {
         public Point Position;
-        private readonly ISensor sensor;
+        private readonly ISensor _sensor;
 
-        private bool isFrozen;
-        int deltaX, deltaY;
-        int lastXDir, lastYDir;
+        private bool _isFrozen;
+        private int _deltaX, _deltaY;
+        private int _lastXDir, _lastYDir;
 
         public Robot(ISensor sensor)
         {
-            this.sensor = sensor;
+            this._sensor = sensor;
         }
 
 
@@ -27,43 +27,43 @@ namespace SmartRobot
             var y = GetNextPosition(Position.Y, goal.Y);
             var next = new Point(x, y);
 
-            if (sensor.IsObstacle(next))
+            if (_sensor.IsObstacle(next))
             {
-                if (isFrozen && (deltaX != 0 || deltaY != 0))
+                if (_isFrozen && (_deltaX != 0 || _deltaY != 0))
                 {
-                    next = Position.MoveBy(deltaX, deltaY);
+                    next = Position.MoveBy(_deltaX, _deltaY);
                 }
                 else
                 {
 
                     next = Position.MoveXTo(x);
-                    if (sensor.IsObstacle(next))
+                    if (_sensor.IsObstacle(next))
                     {
                         next = Position.MoveYTo(y);
                     }
-                    if (sensor.IsObstacle(next))
+                    if (_sensor.IsObstacle(next))
                     {
                         next = Position;
                     }
 
-                    if (!isFrozen)
+                    if (!_isFrozen)
                     {
-                        lastXDir = next.X - Position.X < 0 ? -1 : 1;
-                        lastYDir = next.Y - Position.Y < 0 ? -1 : 1;
+                        _lastXDir = next.X - Position.X < 0 ? -1 : 1;
+                        _lastYDir = next.Y - Position.Y < 0 ? -1 : 1;
                     }
 
                     if (Position == next)
                     {
-                        isFrozen = true;
-                        deltaX = lastXDir * (1 - Math.Abs(Position.X - x));
-                        deltaY = lastYDir * (1 - Math.Abs(Position.Y - y));
+                        _isFrozen = true;
+                        _deltaX = _lastXDir * (1 - Math.Abs(Position.X - x));
+                        _deltaY = _lastYDir * (1 - Math.Abs(Position.Y - y));
                     }
 
                 }
             }
             else
             {
-                isFrozen = false;
+                _isFrozen = false;
             }
 
 

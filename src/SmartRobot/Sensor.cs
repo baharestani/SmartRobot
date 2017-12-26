@@ -25,9 +25,9 @@ namespace SmartRobot
         }
 
 
-        public bool IsObstacle(Point Point)
+        public bool IsObstacle(Point point)
         {
-            return Map.Obstacles.Contains(Point);
+            return Map.Obstacles.Contains(point);
         }
     }
 

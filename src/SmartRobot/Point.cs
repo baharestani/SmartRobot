@@ -16,16 +16,6 @@
             return new Point(X + deltaX, Y + deltaY);
         }
 
-        public Point MoveXBy(int deltaX)
-        {
-            return new Point(X + deltaX, Y);
-        }
-
-        public Point MoveYBy(int deltaY)
-        {
-            return new Point(X, Y + deltaY);
-        }
-
         public Point MoveXTo(int newX)
         {
             return new Point(newX, Y);
@@ -43,7 +33,7 @@
 
         public static bool operator !=(Point p1, Point p2)
         {
-            return !(p1.Y == p2.Y);
+            return p1.Y != p2.Y;
         }
 
         public override bool Equals(object obj)

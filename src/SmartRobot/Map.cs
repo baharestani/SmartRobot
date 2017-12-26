@@ -8,21 +8,15 @@ namespace SmartRobot
 {
     public class Map
     {
-        private readonly List<Point> obstacles = new List<Point>();
+        private readonly List<Point> _obstacles = new List<Point>();
 
-        public IEnumerable<Point> Obstacles
-        {
-            get
-            {
-                return obstacles.AsReadOnly();
-            }
-        }
+        public IEnumerable<Point> Obstacles => _obstacles.AsReadOnly();
 
         public void AddRow(int x, int y, int length)
         {
             for (int i = 0; i < length; i++)
             {
-                obstacles.Add(new Point(x+i, y));
+                _obstacles.Add(new Point(x+i, y));
             }
         }
 
@@ -30,7 +24,7 @@ namespace SmartRobot
         {
             for (int i = 0; i < length; i++)
             {
-                obstacles.Add(new Point(x, y+i));
+                _obstacles.Add(new Point(x, y+i));
             }
         }
     }
